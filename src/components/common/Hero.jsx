@@ -2,7 +2,7 @@ import React from 'react'
 import bg from "../../assets/images/bg.jpg"
 const Hero = () => {
     return (
-        <div className='flex w-full gap-5 px-10 py-10 bg-green-50'>
+        <div className='flex w-full gap-5 px-10 py-10 '>
             {/* left side */}
             <section className='w-1/2 px-4 flex flex-col gap-6 '>
                 <h1 className='text-green-800 font-bold text-5xl'>Bring Nature Home with GreenNest</h1>
