@@ -10,7 +10,7 @@ const CategorySection = () => {
                 <p className='text-gray-600 text-sm text-center'>Find the perfect plants and essentials for your green space.</p>
             </div>
             {/* category card */}
-            <div className='grid grid-cols-2 md:grid-cols-4 gap-5 p-4 mt-6'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-5 p-4 mt-6'>
                 {
                     categories.map(item =>
 
