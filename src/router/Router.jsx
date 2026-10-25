@@ -3,9 +3,12 @@ import Home from "../pages/public/Home"
 import About from "../pages/public/About"
 import Contact from "../pages/public/Contact"
 import PublicLayout from '../components/layout/PublicLayout'
-import CategorySection from "../components/common/CategorySection"
+import CategoryPage from '../pages/customer/CategoryPage'
 import Signup from '../pages/auth/Signup'
 import Login from '../pages/auth/Login'
+import ProductDetails from '../pages/customer/ProductDetails'
+import GardeningServices from '../pages/public/GardeningServices'
+import ServiceDetails from '../pages/customer/ServiceDetails'
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -32,22 +35,21 @@ const Router = createBrowserRouter([
                 element: <Signup />
             },
             {
-                path: "category/indoor-plants",
-                element: <CategorySection />
+                path: "categories/:categoryId",
+                element: <CategoryPage />
             },
             {
-                path: "category/outdoor-plants",
-                element: <CategorySection />
+                path: "products/:productId",
+                element: <ProductDetails />
             },
             {
-                path: "category/seeds",
-                element: <CategorySection />
+                path: "services",
+                element: <GardeningServices />
             },
             {
-                path: "category/pots-planters",
-                element: <CategorySection />
-            },
-
+                path: "services/:serviceId",
+                element: <ServiceDetails />
+            }
 
 
 

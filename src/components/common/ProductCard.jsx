@@ -1,6 +1,6 @@
 
 import React from "react";
-
+import { Link } from "react-router";
 const ProductCard = ({ product }) => {
     return (
         <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
                 </p>
 
                 <h3 className="text-lg font-semibold text-gray-800">
-                    {product.name}
+                    <Link to={`/products/${product.id}`}>{product.name}</Link>
                 </h3>
 
                 <p className="text-sm text-gray-500">
