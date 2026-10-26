@@ -28,8 +28,9 @@ const Signup = () => {
             return;
         }
 
-        const storedUsers = JSON.parse(localStorage.getItem("userData")) || []
-
+        const storedUsers = JSON.parse(localStorage.getItem("userData")) || [];
+        console.log(storedUsers)
+        console.log(Array.isArray(storedUsers))
         const alreadyEmails = storedUsers.some((user) => user.email === email)
         if (alreadyEmails) {
             setError("An Account with this email already exits")
@@ -44,8 +45,8 @@ const Signup = () => {
             role
         }
         //  we had an array properties push so that it add 
-        const newData = storedUsers.push(signUp);
-        localStorage.setItem("userData", JSON.stringify(newData))
+        storedUsers.push(signUp);
+        localStorage.setItem("userData", JSON.stringify(storedUsers))
         setName("")
         setEmail("")
         setPhone("")

@@ -9,6 +9,10 @@ import Login from '../pages/auth/Login'
 import ProductDetails from '../pages/customer/ProductDetails'
 import GardeningServices from '../pages/public/GardeningServices'
 import ServiceDetails from '../pages/customer/ServiceDetails'
+import DashboardLayout from '../components/layout/DashboardLayout'
+import CustomerDashboard from '../pages/customer/CustomerDashboard'
+import VendorDashboard from '../pages/vendor/VendorDashboard'
+import GardenerDashboard from '../pages/gardener/GardenerDashboard'
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -50,9 +54,36 @@ const Router = createBrowserRouter([
                 path: "services/:serviceId",
                 element: <ServiceDetails />
             }
-
-
-
+        ]
+    },
+    {
+        path: "/customer",
+        element: <DashboardLayout />,
+        children: [
+            {
+                path: "dashboard",
+                element: <CustomerDashboard />
+            }
+        ]
+    },
+    {
+        path: "/vendor",
+        element: <DashboardLayout />,
+        children: [
+            {
+                path: "dashboard",
+                element: <VendorDashboard />
+            }
+        ]
+    },
+    {
+        path: "/gardener",
+        element: <DashboardLayout />,
+        children: [
+            {
+                path: "dashboard",
+                element: <GardenerDashboard />
+            }
         ]
     }
 ])
