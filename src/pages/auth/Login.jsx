@@ -91,8 +91,7 @@ const Login = () => {
                             <div className="relative">
                                 <input
                                     value={password}
-                                    on
-                                    Change={(e) => {
+                                    onChange={(e) => {
                                         setPassword(e.target.value);
                                         setError("");
                                     }}

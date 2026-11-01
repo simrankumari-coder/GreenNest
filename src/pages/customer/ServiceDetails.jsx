@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router'
 import services from '../../data/services';
+import { Link } from 'react-router';
 const ServiceDetails = () => {
     const { serviceId } = useParams();
     const service = services.find((item) => item.id === Number(serviceId))
@@ -64,9 +65,9 @@ const ServiceDetails = () => {
                                 </ul>
                             </div>
 
-                            <button className="w-full rounded-xl bg-green-700 py-3 font-semibold text-white transition hover:bg-green-800">
+                            <Link to={`/services/${service.id}/book-service`} className="w-full rounded-xl bg-green-700 py-3 font-semibold text-white transition hover:bg-green-800">
                                 Book This Service
-                            </button>
+                            </Link>
 
                         </div>
                     </div>

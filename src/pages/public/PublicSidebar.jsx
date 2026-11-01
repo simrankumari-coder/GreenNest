@@ -8,11 +8,7 @@ ${isActive ? "bg-green-100 text-green-700 font-semibold"
             : "text-gray-600 hover:bg-green-50 hover:text-green-700"
         }`
     return (
-        <aside className="hidden md:flex flex-col w-60 min-h-screen bg-white border-r border-gray-200 p-5">
-
-            <h2 className="text-2xl font-bold text-green-700 mb-8">
-                GreenNest
-            </h2>
+        <aside className="hidden lg:flex flex-col w-60 min-h-screen bg-white border-r border-gray-200 p-5">
 
             <nav className="flex flex-col gap-3">
                 <NavLink to="/" className={style}>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router'
 import products from '../../data/products'
+import addToCart from '../../utils/cart'
 import { useState } from 'react'
 import { Link } from 'react-router'
 const ProductDetails = () => {
@@ -8,6 +9,15 @@ const ProductDetails = () => {
     const [count, setCount] = useState(1)
 
     const product = products.find((item) => item.id === Number(productId))
+
+    const [showMessage, setShowMessage] = useState("")
+    const handleAddToCart = () => {
+        addToCart(product, 1)
+        setShowMessage("Product added to the cart successfully")
+        setTimeout(() => {
+            setShowMessage("");
+        }, 3000);
+    }
 
     return (
         <div>
@@ -97,8 +107,14 @@ const ProductDetails = () => {
                                     </div>
                                 </div>
 
+                                {showMessage && (
+                                    <p className="text-sm text-green-700">
+                                        {showMessage}
+                                    </p>
+                                )}
+
                                 {/* Add to Cart */}
-                                <button className="w-full rounded-xl bg-green-700 py-3 font-semibold text-white transition hover:bg-green-800">
+                                <button onClick={handleAddToCart} className="w-full rounded-xl bg-green-700 py-3 font-semibold text-white transition hover:bg-green-800">
                                     Add to Cart
                                 </button>
 

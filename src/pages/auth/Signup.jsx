@@ -11,6 +11,9 @@ const Signup = () => {
     const [confirmPass, setConfirmPass] = useState("")
     const [error, setError] = useState("")
     const [role, setRole] = useState("Customer")
+    const [address, setAddress] = useState("")
+    const [city, setCity] = useState("")
+    const [pinCode, setPinCode] = useState("")
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const handleSignUp = (e) => {
@@ -21,7 +24,10 @@ const Signup = () => {
             !emailRegex.test(email) ||
             password.length < 6 ||
             phone.length !== 10 ||
-            confirmPass !== password
+            confirmPass !== password ||
+            address.trim() === "" ||
+            city.trim() === "" ||
+            pinCode.length !== 6
 
         if (isValid) {
             setError("Please enter a valid details")
@@ -38,11 +44,16 @@ const Signup = () => {
         }
 
         const signUp = {
+            id: Date.now(),
             name,
             email,
             phone,
             password,
-            role
+            role,
+            address,
+            pinCode,
+            city,
+            createdAt: new Date().toISOString()
         }
         //  we had an array properties push so that it add 
         storedUsers.push(signUp);
@@ -52,7 +63,10 @@ const Signup = () => {
         setPhone("")
         setPassword("")
         setConfirmPass("")
-        setRole("")
+        setRole("Customer")
+        setAddress("")
+        setPinCode("")
+        setCity("")
 
         navigate("/login")
 
@@ -210,6 +224,51 @@ const Signup = () => {
                                     Passwords don't match
                                 </p>
                             }
+                        </div>
+                        {/* Pin code */}
+                        <div>
+                            <label className="mb-2 block text-sm font-medium text-slate-900">
+                                Pin Code
+                            </label>
+                            <input
+                                value={pinCode}
+                                onChange={(e) => setPinCode(e.target.value)}
+                                placeholder="Write your pincode"
+                                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-green-600 focus:ring-1 focus:ring-green-600"
+                            />
+                            {pinCode.length > 0 && pinCode.length !== 6 &&
+                                <p className="mt-1 text-sm text-red-500">
+                                    Pincode is not correct
+                                </p>
+                            }
+                        </div>
+                        {/* CIty */}
+                        <div>
+                            <label className="mb-2 block text-sm font-medium text-slate-900">
+                                Your City
+                            </label>
+                            <input
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                                type="text"
+                                placeholder="Your ciy"
+                                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-green-600 focus:ring-1 focus:ring-green-600"
+                            />
+
+                        </div>
+                        {/* adddress */}
+                        <div>
+                            <label className="mb-2 block text-sm font-medium text-slate-900">
+                                Complete Address
+                            </label>
+                            <textarea
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
+                                rows="3"
+                                placeholder="write your complete address"
+                                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-green-600 focus:ring-1 focus:ring-green-600"
+                            />
+
                         </div>
 
                     </div>

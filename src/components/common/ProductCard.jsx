@@ -1,7 +1,17 @@
 
 import React from "react";
 import { Link } from "react-router";
+import addToCart from "../../utils/cart";
+import { useState } from "react";
 const ProductCard = ({ product }) => {
+    const [showMessage, setShowMessage] = useState("")
+    const handleAddToCart = () => {
+        addToCart(product, 1)
+        setShowMessage("Product added to the cart successfully")
+        setTimeout(() => {
+            setShowMessage("");
+        }, 3000);
+    }
     return (
         <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
 
@@ -39,7 +49,14 @@ const ProductCard = ({ product }) => {
                     </span>
                 </div>
 
-                <button className="w-full bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition">
+                <Link to={`/products/${product.id}`} className="w-full text-center border border-green-700  text-green-700 py-2 rounded-lg hover:bg-green-50 transition">View Details</Link>
+
+                {showMessage && (
+                    <p className="text-sm text-green-700">
+                        {showMessage}
+                    </p>
+                )}
+                <button onClick={handleAddToCart} className="w-full bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition">
                     Add to Cart
                 </button>
 

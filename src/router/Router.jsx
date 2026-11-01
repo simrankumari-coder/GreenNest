@@ -13,6 +13,17 @@ import DashboardLayout from '../components/layout/DashboardLayout'
 import CustomerDashboard from '../pages/customer/CustomerDashboard'
 import VendorDashboard from '../pages/vendor/VendorDashboard'
 import GardenerDashboard from '../pages/gardener/GardenerDashboard'
+import ShopPage from '../pages/customer/ShopPage'
+import Cart from '../pages/customer/Cart'
+import CheckoutPage from '../pages/customer/CheckoutPage'
+import OrderConfirmation from '../pages/customer/OrderConfirmation'
+import MyOrders from '../pages/customer/MyOrders'
+import BookService from '../pages/customer/BookService'
+import BookingConfirmation from '../pages/customer/BookingConfirmation'
+import MyBookings from '../pages/customer/MyBookings'
+import MyProfile from '../pages/customer/MyProfile'
+import AddProduct from '../pages/vendor/AddProduct'
+import MyProducts from '../pages/vendor/MyProducts'
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -53,7 +64,33 @@ const Router = createBrowserRouter([
             {
                 path: "services/:serviceId",
                 element: <ServiceDetails />
-            }
+            },
+            {
+                path: "services/:serviceId/book-service",
+                element: <BookService />
+            },
+            {
+                path: "shop",
+                element: <ShopPage />
+            },
+            {
+                path: "cart",
+                element: <Cart />
+            },
+            {
+                path: "checkout",
+                element: <CheckoutPage />
+            },
+
+            {
+                path: "orderConfirmation/:orderId",
+                element: <OrderConfirmation />
+
+            },
+            {
+                path: "confirm-booking/:bookingId",
+                element: <BookingConfirmation />
+            },
         ]
     },
     {
@@ -63,6 +100,18 @@ const Router = createBrowserRouter([
             {
                 path: "dashboard",
                 element: <CustomerDashboard />
+            },
+            {
+                path: "orders",
+                element: <MyOrders />
+            },
+            {
+                path: "bookings",
+                element: <MyBookings />
+            },
+            {
+                path: "profile",
+                element: <MyProfile />
             }
         ]
     },
@@ -73,6 +122,14 @@ const Router = createBrowserRouter([
             {
                 path: "dashboard",
                 element: <VendorDashboard />
+            },
+            {
+                path: "add-product",
+                element: <AddProduct />
+            },
+            {
+                path: "products",
+                element: <MyProducts />
             }
         ]
     },
