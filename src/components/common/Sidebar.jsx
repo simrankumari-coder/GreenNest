@@ -20,14 +20,12 @@ const Sidebar = () => {
             { name: "Dashboard", path: "/vendor/dashboard" },
             { name: "My Products", path: "/vendor/products" },
             { name: "Add Product", path: "/vendor/add-product" },
-            { name: "Customer Orders", path: "/vendor/orders" },
             { name: "My Profile", path: "/vendor/profile" },
         ],
 
         Gardener: [
             { name: "Dashboard", path: "/gardener/dashboard" },
-            { name: "Service Requests", path: "/gardener/requests" },
-            { name: "Upcoming Jobs", path: "/gardener/jobs" },
+            { name: "My Bookings", path: "/gardener/mybookings" },
             { name: "My Profile", path: "/gardener/profile" },
         ],
     };

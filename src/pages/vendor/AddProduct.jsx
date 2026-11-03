@@ -16,13 +16,19 @@ const AddProduct = () => {
 
     const handleImage = (e) => {
         const selectImg = e.target.files[0];
-        if (selectImg) {
-            const reader = new FileReader()
-            reader.onloadend = () => {
-                setImg(reader.result)
-            }
-            reader.readAsDataURL(selectImg)
+        if (!selectImg) return;
+
+        if (selectImg.size > 1024 * 1024) {
+            alert("Please select img less than 1 MB")
+            e.target.value = "";
+            return;
         }
+
+        const reader = new FileReader()
+        reader.onloadend = () => {
+            setImg(reader.result)
+        }
+        reader.readAsDataURL(selectImg)
     }
 
     const handleProduct = (e) => {

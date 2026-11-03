@@ -52,11 +52,6 @@ ${isActive ? "bg-green-100 text-green-700 font-semibold"
                                     <span>Shop Plants</span>
                                 </NavLink>
 
-                                <NavLink to="/categories" className={style}>
-                                    <FaThLarge />
-                                    <span>Categories</span>
-                                </NavLink>
-
                                 <NavLink to="/services" className={style}>
                                     <FaLeaf />
                                     <span>Gardening Services</span>

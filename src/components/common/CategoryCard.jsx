@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 const CategoryCard = ({ id, name, link, description, image }) => {
     return (
-        <div className='w-full bg-green-200 p-5 '>
+        <div className='w-full bg-green-200 p-5  '>
             {/* image */}
             <div className=' overflow-hidden'>
 

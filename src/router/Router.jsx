@@ -24,6 +24,10 @@ import MyBookings from '../pages/customer/MyBookings'
 import MyProfile from '../pages/customer/MyProfile'
 import AddProduct from '../pages/vendor/AddProduct'
 import MyProducts from '../pages/vendor/MyProducts'
+import EditProduct from '../pages/vendor/EditProduct'
+import VendorProfile from '../pages/vendor/VendorProfile'
+import GardenerBookings from '../pages/gardener/GardenerBookings'
+import GardenerProfile from '../pages/gardener/GardenerProfile'
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -130,6 +134,14 @@ const Router = createBrowserRouter([
             {
                 path: "products",
                 element: <MyProducts />
+            },
+            {
+                path: "products/edit-product/:productId",
+                element: <EditProduct />
+            },
+            {
+                path: "profile",
+                element: <VendorProfile />
             }
         ]
     },
@@ -140,6 +152,14 @@ const Router = createBrowserRouter([
             {
                 path: "dashboard",
                 element: <GardenerDashboard />
+            },
+            {
+                path: "mybookings",
+                element: <GardenerBookings />
+            },
+            {
+                path: "profile",
+                element: <GardenerProfile />
             }
         ]
     }

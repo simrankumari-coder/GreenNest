@@ -11,7 +11,7 @@ import {
 const MyBookings = () => {
     const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))
-    const myBookings = bookings.filter((booking) => booking.UserId === loggedInUser.id)
+    const myBookings = bookings.filter((booking) => booking.userId === loggedInUser.id)
     return (
         <div className="min-h-screen bg-gray-50 p-4 md:p-8">
 
@@ -24,7 +24,7 @@ const MyBookings = () => {
                 </p>
             </div>
 
-            {MyBookings.length === 0 ? (
+            {myBookings.length === 0 ? (
                 <div className="rounded-xl bg-white px-6 py-16 text-center shadow-sm">
                     <LuClipboardList className="mx-auto mb-4 text-5xl text-gray-400" />
 
@@ -45,7 +45,7 @@ const MyBookings = () => {
                 </div>
             ) : (
                 <div className="space-y-5">
-                    {MyBookings.map((booking) => (
+                    {myBookings.map((booking) => (
                         <div
                             key={booking.bookingId}
                             className="rounded-xl bg-white p-5 shadow-sm"

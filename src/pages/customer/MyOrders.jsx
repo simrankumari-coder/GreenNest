@@ -39,7 +39,7 @@ const MyOrders = () => {
                 </div>
             ) : (
                 <div className="space-y-5">
-                    {MyOrders.map((order) => (
+                    {myOrders.map((order) => (
                         <div
                             key={order.orderId}
                             className="rounded-xl bg-white p-5 shadow-sm"

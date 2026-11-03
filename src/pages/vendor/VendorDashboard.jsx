@@ -5,8 +5,20 @@ import { FaRegClock } from 'react-icons/fa'
 import { CiCircleCheck } from 'react-icons/ci'
 import { LuPackageSearch, LuClipboardList } from 'react-icons/lu'
 import { Link } from 'react-router'
-
+import { useState } from 'react'
 const VendorDashboard = () => {
+    const [products, setProducts] = useState(JSON.parse(localStorage.getItem("addProduct")) || []
+    )
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {}
+
+    const myProducts = products.filter((product) => product.vendorId === loggedInUser.id)
+
+    const totalProducts = myProducts.length;
+    const activeProducts = myProducts.filter((product) => product.status === "active").length
+    const inActiveProducts = myProducts.filter((product) => product.status === "inactive").length
+    console.log("products", products)
+    console.log("logged user", loggedInUser)
+    console.log("my products", myProducts)
     return (
 
         <div className="min-h-screen bg-gray-50 p-4 md:p-8">  <div className="mb-8">
@@ -28,26 +40,20 @@ const VendorDashboard = () => {
 
                         <div className="rounded-xl bg-white p-5 shadow-sm">
                             <IoCubeOutline className="mb-3 text-3xl text-green-700" />
-                            <p className="text-2xl font-bold text-gray-800">12</p>
+                            <p className="text-2xl font-bold text-gray-800">{totalProducts}</p>
                             <p className="mt-1 text-sm text-gray-500">Total Products</p>
                         </div>
 
                         <div className="rounded-xl bg-white p-5 shadow-sm">
                             <IoBagOutline className="mb-3 text-3xl text-blue-600" />
-                            <p className="text-2xl font-bold text-gray-800">09</p>
-                            <p className="mt-1 text-sm text-gray-500">Total Orders</p>
+                            <p className="text-2xl font-bold text-gray-800">{activeProducts}</p>
+                            <p className="mt-1 text-sm text-gray-500">Active Products</p>
                         </div>
 
                         <div className="rounded-xl bg-white p-5 shadow-sm">
                             <FaRegClock className="mb-3 text-3xl text-orange-500" />
-                            <p className="text-2xl font-bold text-gray-800">03</p>
-                            <p className="mt-1 text-sm text-gray-500">Pending Orders</p>
-                        </div>
-
-                        <div className="rounded-xl bg-white p-5 shadow-sm">
-                            <CiCircleCheck className="mb-3 text-3xl text-green-600" />
-                            <p className="text-2xl font-bold text-gray-800">06</p>
-                            <p className="mt-1 text-sm text-gray-500">Completed Orders</p>
+                            <p className="text-2xl font-bold text-gray-800">{inActiveProducts}</p>
+                            <p className="mt-1 text-sm text-gray-500">Inactive Products</p>
                         </div>
 
                     </div>
@@ -75,14 +81,6 @@ const VendorDashboard = () => {
                             <p className="mt-1 text-sm text-gray-500">Manage listings</p>
                         </Link>
 
-                        <Link to="/vendor/orders"
-                            className="rounded-xl bg-white p-6 shadow-sm transition hover:shadow-md">
-                            <LuClipboardList className="mb-3 text-3xl text-green-700" />
-                            <h3 className="font-semibold text-gray-800">Manage Orders</h3>
-                            <p className="mt-1 text-sm text-gray-500">
-                                View and update customer orders
-                            </p>
-                        </Link>
 
                     </div>
                 </div>

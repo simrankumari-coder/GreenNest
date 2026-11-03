@@ -30,6 +30,7 @@ const BookService = () => {
             const bookData = {
                 bookingId: Date.now(),
                 userId: loggedInUser.id,
+                gardenerId: null,
                 serviceId: selectedService.id,
                 serviceName: selectedService.name,
                 price: selectedService.price,
