@@ -13,6 +13,11 @@ const CheckoutPage = () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || []
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))
 
+  if (!loggedInUser) {
+    alert("Please login to your account before placing an order")
+    navigate("/login")
+    return;
+  }
   const totalPrice = () => {
     return cart.reduce((accumulator, product) => {
       return accumulator + (product.price * product.quantity)
@@ -22,7 +27,6 @@ const CheckoutPage = () => {
   const finalAmount = () => {
     return totalPrice() + deliveryCharges;
   }
-
   const handleOrder = (e) => {
     e.preventDefault()
     if (cart.length === 0) {

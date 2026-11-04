@@ -44,8 +44,8 @@ const Footer = () => {
                         <h3 className="font-semibold text-lg mb-4">Account</h3>
                         <ul className="space-y-3 text-sm text-green-100">
 
-                            <li>Login</li>
-                            <li>Sign Up</li>
+                            <li><a href="/login" className="hover:text-white">Login</a></li>
+                            <li><a href="/signup" className="hover:text-white">Sign Up</a></li>
                         </ul>
                     </div>
 

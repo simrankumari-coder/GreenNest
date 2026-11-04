@@ -20,6 +20,11 @@ const BookService = () => {
     const [description, setDescription] = useState("");
 
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))
+    if (!loggedInUser) {
+        alert("Please login to your account before placing an order")
+        navigate("/login")
+        return;
+    }
     const handleBooking = (e) => {
         e.preventDefault();
         if (name.trim().length < 2 || phone.length != 10 || address.trim() === "" || date === "" || time === "" || description === "") {
