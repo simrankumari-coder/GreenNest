@@ -19,7 +19,6 @@ const GardenerDashboard = () => {
     const gardenerBookings = bookings.filter(
         (booking) => booking.gardenerId === loggedInUser.id
     );
-
     const totalBookings = bookings.filter((booking) =>
         booking.gardenerId == null || booking.gardenerId === loggedInUser.id).length
 

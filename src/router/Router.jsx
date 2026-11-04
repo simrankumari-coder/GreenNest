@@ -28,6 +28,7 @@ import EditProduct from '../pages/vendor/EditProduct'
 import VendorProfile from '../pages/vendor/VendorProfile'
 import GardenerBookings from '../pages/gardener/GardenerBookings'
 import GardenerProfile from '../pages/gardener/GardenerProfile'
+import ProtectedRoute from '../components/common/ProtectedRoute'
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -99,67 +100,87 @@ const Router = createBrowserRouter([
     },
     {
         path: "/customer",
-        element: <DashboardLayout />,
+        element: <ProtectedRoute allowedRole="Customer" />,
         children: [
+
             {
-                path: "dashboard",
-                element: <CustomerDashboard />
-            },
-            {
-                path: "orders",
-                element: <MyOrders />
-            },
-            {
-                path: "bookings",
-                element: <MyBookings />
-            },
-            {
-                path: "profile",
-                element: <MyProfile />
+                element: <DashboardLayout />,
+                children: [
+                    {
+                        path: "dashboard",
+                        element: <CustomerDashboard />
+                    },
+                    {
+                        path: "orders",
+                        element: <MyOrders />
+                    },
+                    {
+                        path: "bookings",
+                        element: <MyBookings />
+                    },
+                    {
+                        path: "profile",
+                        element: <MyProfile />
+                    }
+                ]
             }
         ]
     },
+
     {
         path: "/vendor",
-        element: <DashboardLayout />,
+        element: <ProtectedRoute allowedRole="Vendor" />,
         children: [
+
             {
-                path: "dashboard",
-                element: <VendorDashboard />
-            },
-            {
-                path: "add-product",
-                element: <AddProduct />
-            },
-            {
-                path: "products",
-                element: <MyProducts />
-            },
-            {
-                path: "products/edit-product/:productId",
-                element: <EditProduct />
-            },
-            {
-                path: "profile",
-                element: <VendorProfile />
+                element: <DashboardLayout />,
+                children: [
+                    {
+                        path: "dashboard",
+                        element: <VendorDashboard />
+                    },
+                    {
+                        path: "add-product",
+                        element: <AddProduct />
+                    },
+                    {
+                        path: "products",
+                        element: <MyProducts />
+                    },
+                    {
+                        path: "products/edit-product/:productId",
+                        element: <EditProduct />
+                    },
+                    {
+                        path: "profile",
+                        element: <VendorProfile />
+                    }
+                ]
             }
         ]
     },
     {
         path: "/gardener",
-        element: <DashboardLayout />,
+
+        element: <ProtectedRoute allowedRole="Gardener" />,
         children: [
+
             {
-                path: "dashboard",
-                element: <GardenerDashboard />
-            },
-            {
-                path: "mybookings",
-                element: <GardenerBookings />
-            },
-            {
-                path: "profile",
-                element: <GardenerProfile />
+                element: <DashboardLayout />,
+                children: [
+                    {
+                        path: "dashboard",
+                        element: <GardenerDashboard />
+                    },
+                    {
+                        path: "mybookings",
+                        element: <GardenerBookings />
+                    },
+                    {
+                        path: "profile",
+                        element: <GardenerProfile />
+                    }
+                ]
             }
         ]
     }
