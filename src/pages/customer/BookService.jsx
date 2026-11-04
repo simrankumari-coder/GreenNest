@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { useParams } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import services from '../../data/services';
 
@@ -20,11 +20,14 @@ const BookService = () => {
     const [description, setDescription] = useState("");
 
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))
-    if (!loggedInUser) {
-        alert("Please login to your account before placing an order")
-        navigate("/login")
-        return;
-    }
+    useEffect(() => {
+
+        if (!loggedInUser) {
+            alert("Please login to your account before placing an order")
+            navigate("/login")
+
+        }
+    }, [navigate, loggedInUser])
     const handleBooking = (e) => {
         e.preventDefault();
         if (name.trim().length < 2 || phone.length != 10 || address.trim() === "" || date === "" || time === "" || description === "") {

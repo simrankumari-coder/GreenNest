@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 const CheckoutPage = () => {
   const navigate = useNavigate();
@@ -12,12 +12,14 @@ const CheckoutPage = () => {
   const [error, setError] = useState(false)
   const cart = JSON.parse(localStorage.getItem("cart")) || []
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))
+  useEffect(() => {
 
-  if (!loggedInUser) {
-    alert("Please login to your account before placing an order")
-    navigate("/login")
-    return;
-  }
+    if (!loggedInUser) {
+      alert("Please login to your account before placing an order")
+      navigate("/login")
+
+    }
+  }, [navigate, loggedInUser])
   const totalPrice = () => {
     return cart.reduce((accumulator, product) => {
       return accumulator + (product.price * product.quantity)
